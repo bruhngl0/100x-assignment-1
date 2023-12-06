@@ -1,102 +1,94 @@
-/*function target(arr) {
-  let arrnew = arr.reduce((acc,val)=>{
-    if(val > 0 ){
-      return (acc+val)
-    }
-    else{
-      return acc
-    }
-  }, 0)
+//anargam problem -easy
+/*function anar(one, two, callback){
+  let first = callback(one)
+  let second = callback(two)
 
-  console.log(arrnew)
+   first == second ? console.log("true") : console.log(false)
+}
 
+function logic(str){
+  return str.toLowerCase().split("").sort().join("")
+}
 
-  let arrnewone = arr.reduce((acc, val)=> {
-    if (val < 0){
-      return (acc+val)
-    }
-    else{
-      return acc
-    }
-  },0)
-  console.log(arrnewone)
-
-  let res = [arrnew, arrnewone]
-  console.log(res)
-} */
+anar('openai!', 'open', logic) */
 
 
 
-//using filter and reduce
 
-/*function tryone(arr){
- let arrnew = arr.filter((val)=> val>0).reduce((acc,vals)=> acc + vals)
- let arrnewone = arr.filter((val)=> val<0).reduce((acc,vals)=> acc+vals)
- console.log([arrnew, arrnewone])
+
+//find largest in an array
+
+/*function largest(arr){
+  arr.sort((a,b)=> a-b)
+  console.log(arr[arr.length-1])
+}
+
+largest([-3.5, -7.2, -2.1, -9.8, -1.9, -5.1]) */
+
+//transactions
+
+
+/*
+ count vowels 
+*/
+
+
+/*function phrase(str) {
+ 
+  let newArr = str.toLowerCase().split("").filter((val)=> val == "a"||     val=="e"||val=="i"||val=="o"||val=="u").length
+
+  console.log(newArr)
+}
+
+phrase("rythmaeaii"); */
+
+//OR USE /[aeiou]/.test(str)
+
+/*function phrase(str){
+  let newArr = str.toLowerCase().split("").filter((val)=> /[aeiou]/.test(val)).length
+  console.log(newArr)
+}
+
+phrase("adityasharma is") */
+
+//pallendrome
+
+/*function check(str, callback) {
+
+  let modInputStr = callback(str)
+  let revStr = modInputStr.split("").reverse().join("")
+  modInputStr == revStr ? console.log(true) : console.log(false)
 }
 
 
-
-tryone([1,2,3,4,5,6, -8, -9]) */
-
-
-//using foreach
-
-/*function mauj(arr){
-
-  let one = 0;
-  let two = 0;
-
-  arr.forEach(element => {
-    if(element > 0){
-      one = one+element
-    }
-    else{
-      two = two+ element
-    }
-  }
-  
-  );
-
-  console.log([one, two])
-
-} */
-
-
-/*function mauj(arr) {
-  const resu = arr.reduce((acc,val)=> {
-     if(val > 0){
-      acc[0] = acc[0]+val
-     }
-
-     else{
-      acc[1]= acc[1]+val
-     }
-
-     return acc
-  }, [0,0])
-
-  console.log(resu)
+function modInp(str){
+  let modInputStr = str.toLowerCase().split(" ").join("")
+   return modInputStr.replace(/[^\w\s]/g, '')  
 }
 
-mauj([1,2,3,4,5,6, -8, -9])
+check("openai", modInp)*/
 
- */
-/*wave("hello") => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+//calculate the time to compile the sum of 1 to n
 
-function wave(str) {
-   
-  for(let i =0  ; i <= str.length ; i++)
-} */
-
-function add(num) {
- console.time()
+/*function add(num) {
   let acc = 0;
   for (let i = 0;  i<=num; i++){
     acc = acc+i
   }
   console.log(acc)
- console.timeEnd()
 }
 
-add(10000000000)
+add(10000000)
+/* OUTPUT
+PS D:\leon\codewars> node main.js
+50000005000000
+default: 17.134ms
+PS D:\leon\codewars> node main.js
+PS D:\leon\codewars> node main.js
+500000000067109000
+default: 1.000s
+PS D:\leon\codewars> node main.js
+50000000000067860000
+default: 10.406s
+PS D:\leon\codewars> */
+
