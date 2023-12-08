@@ -167,3 +167,45 @@ function easy(tranactions) {
 
 easy(data) */
 
+/*class CreateObj {
+  constructor(name,age,designation){
+    this.name = name;
+    this.age = age;
+    this.designation = "developer"
+  }
+}
+
+
+const dataOne = new CreateObj("aditya", 34, "developer")
+console.log(dataOne) */
+
+class Entries{
+  constructor(name,age){
+    this.name = name;
+    this.age = age;
+  }
+
+  play() {
+    this.age > 18 ? console.log("eligible to play") : console.log("not eligible")
+  }
+}
+
+
+const dataOne = new Entries("aditya", 28)
+const dataTwo = new Entries("piyush", "16")
+
+
+
+
+class Coach {
+  constructor(name){
+    this.name = name;
+  }
+}
+
+const mike = new Coach("mike")
+mike.play = dataOne.play
+console.log(mike)
+
+mike.play.call(dataOne)
+mike.play.call(dataTwo)
