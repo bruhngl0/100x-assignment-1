@@ -178,7 +178,7 @@ easy(data) */
 
 const dataOne = new CreateObj("aditya", 34, "developer")
 console.log(dataOne) */
-
+/*
 class Entries{
   constructor(name,age){
     this.name = name;
@@ -208,4 +208,71 @@ mike.play = dataOne.play
 console.log(mike)
 
 mike.play.call(dataOne)
-mike.play.call(dataTwo)
+mike.play.call(dataTwo) */
+
+//addTodo ---working
+//update task ---working
+//clearAll --working
+//getAll --working
+//get task by index ---- working
+//remove task by index ---working
+
+class Todo {
+  constructor(){
+    this.arr = []
+  }
+
+  addTodo(task){
+    this.arr.push(task)   //working
+  }
+
+  updataTodo(index, updateTask){
+    if(index >=0 && index < this.arr.length){
+      this.arr[index] = updateTask
+    }
+   
+  }
+
+  getAll(){
+    return this.arr.slice()
+  }
+
+  clearAll(){
+    this.arr = []
+  }
+  
+  taskInd(index){
+    if(index>=0 && index < this.arr.length){
+     return this.arr[index]
+    }
+  }
+
+  removeTask(index){
+    if(index>=0 && index < this.arr.length){
+      this.arr.splice(index,1)
+    }
+  }
+}
+
+
+const data = new Todo 
+
+
+
+
+data.addTodo("buy groceries")
+data.addTodo("complete homework")
+data.addTodo("go for a run")
+
+console.log(data.getAll())
+
+data.updataTodo(1, "finish")
+console.log(data.getAll())
+
+data.removeTask(0)
+console.log(data.getAll())
+
+console.log(data.taskInd(1))
+
+data.clearAll()
+console.log(data.getAll())
