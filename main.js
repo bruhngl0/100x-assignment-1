@@ -340,3 +340,74 @@ class Calculator {
 
 const math = new Calculator
 console.log(math.getResult())
+
+
+class Teacher{
+  constructor(name){
+    this.name = name
+  }
+}
+
+
+const im = new Teacher("mike")
+im.calc = math.calc
+
+console.log(im.calc("2+3+4"))
+console.log(im)
+
+
+/*
+User
+how can i avoid sharing method? is that where abstraction comes in?
+ChatGPT
+
+Yes, abstraction is indeed a concept that can help you avoid directly sharing methods between unrelated classes and improve the overall design of your code. Abstraction involves hiding the implementation details of a class and exposing only what is necessary for other parts of the code to interact with it. This helps to reduce dependencies and make your code more modular and maintainable.
+
+Here are some general principles and techniques that can help you avoid sharing methods between unrelated classes:
+
+    Define Clear Responsibilities:
+    Each class should have a clear and specific responsibility. Avoid combining unrelated functionalities within a single class.
+
+    Encapsulation:
+    Encapsulate the internal state and behavior of a class, exposing only what is necessary. Use private and protected access modifiers to control access to the internal details of a class.
+
+    Dependency Injection:
+    Rather than having one class depend on the methods of another class directly, use dependency injection. Pass the necessary dependencies to a class through its constructor or methods.
+
+    Interfaces and Abstract Classes:
+    Define interfaces or abstract classes to provide a common set of methods that related classes can implement. This allows you to share a common interface without directly exposing the implementation.
+
+    Composition over Inheritance:
+    Prefer composition over inheritance. Instead of inheriting from a class to reuse its methods, favor composition by creating instances of classes within other classes.
+
+Here's a simple example illustrating some of these concepts:
+
+javascript
+
+// Abstract interface or class
+class Calculator {
+  calculate(expression) {
+    // Implementation of the calculation
+    return eval(expression);
+  }
+}
+
+class Teacher {
+  constructor(name, calculator) {
+    this.name = name;
+    this.calculator = calculator;
+  }
+
+  performCalculation(expression) {
+    // Delegate the calculation to the injected calculator
+    return this.calculator.calculate(expression);
+  }
+}
+
+// Example usage
+const calculator = new Calculator();
+const teacher = new Teacher("Mike", calculator);
+
+console.log(teacher.performCalculation("2+3+4"));
+
+In this example, the Teacher class has a dependency on the Calculator class, but it doesn't directly use or share its methods. Instead, it delegates the calculation responsibility to the injected Calculator instance through the performCalculation method. This promotes a more modular */
