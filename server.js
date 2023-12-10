@@ -85,16 +85,111 @@ fetchdata(cb) */
 
 //write one more custom-made asynchronos function
 
-function quiz(cb) {
-    setTimeout(() => {
-      cb()
-    }, 2000);
+/*function quiz(cb) {
+  setTimeout(() => {
+    cb()
+  }, 2000);
+}
+
+function cb() {
+  const rest = Math.random();
+  console.log(rest);
+  rest > 0.5 ? console.log("win") : console.log("lose");
+}
+
+quiz(cb) */
+
+
+//since all these are callbacks, and we know that dealing with callbacks become nasty when the result of the callback of one function, is required as an argument of the next asynchronous task, we face a big problem knows as callback hell--- 
+
+/*readFile('example.txt', (err, data1) => {
+  if (err) {
+    console.error('Error reading file:', err);
+  } else {
+    makeHttpRequest(data1, (err, data2) => {
+      if (err) {
+        console.error('Error making HTTP request:', err);
+      } else {
+        processResult(data2, (err, finalResult) => {
+          if (err) {
+            console.error('Error processing result:', err);
+          } else {
+            console.log('Final Result:', finalResult);
+          }
+        });
+      }
+    });
+  }
+});
+ */
+
+
+//so to eliminate this problems of callbacks, we will use promises, that sends back the state of the promise. under the hood it works same its just a syntactical sugar--
+
+
+
+/*function lol(){
+    return new Promise((resolve, reject)=> {
+  
+      setTimeout(()=>{
+        let data = 5
+        resolve(data)
+      },3000)
+    })
   }
   
-  function cb() {
-    const rest = Math.random();
-    console.log(rest);
-    rest > 0.5 ? console.log("win") : console.log("lose");
-  }
   
-  quiz(cb)
+  function cb(a,b) {
+    console.log(a+b)  
+    }
+  
+  const a = lol()
+  console.log(a)
+  
+  lol().then((data)=>{
+    cb(data, 5)
+  }) */
+
+
+
+
+ /* function cookMaggie(){
+ return new Promise((resolve)=>{
+    setTimeout(()=>{
+        const message = " i have bought the maggie"
+        resolve(message)
+   },3000)
+ })
+  
+  }
+
+
+
+  function subtract(a,b){
+    return(a-b)
+  }
+
+
+  cookMaggie().then((message)=>{
+    let res  = subtract(5,3)
+    console.log(res,message)
+  }) */
+
+
+// same function with callbacks---
+
+/*
+  function cookMaggie(cb, a,b){
+    setTimeout(()=>{
+        const message = "i have bought the maggie"
+        console.log(cb(a,b), message)
+    }, 1000)
+  }
+
+
+  function bc(a,b){
+    return a+b
+  }
+
+
+  cookMaggie(bc, 4,4) */
