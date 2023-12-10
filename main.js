@@ -300,7 +300,11 @@ console.log(data.getAll()) */
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {
+
+
+
+
+ /*class Calculator {
   constructor(){
     this.ans = 0;
   }
@@ -335,7 +339,7 @@ class Calculator {
     this.ans = cal
   }
 
-}
+  }
 
 
 const math = new Calculator
@@ -354,60 +358,76 @@ im.calc = math.calc
 
 console.log(im.calc("2+3+4"))
 console.log(im)
+ */
+
+//callback function -- task is to run it asynchronously
+const sub = (a,b)=> console.log(a-b)
 
 
-/*
-User
-how can i avoid sharing method? is that where abstraction comes in?
-ChatGPT
+//sol ---  two ways ---
+//-first sol - use it directly in asynchronous functions provided by the browser API, like settimeout 
+//to simulate the asynchronous nature
 
-Yes, abstraction is indeed a concept that can help you avoid directly sharing methods between unrelated classes and improve the overall design of your code. Abstraction involves hiding the implementation details of a class and exposing only what is necessary for other parts of the code to interact with it. This helps to reduce dependencies and make your code more modular and maintainable.
+setTimeout(()=>{
+  sub(2,3)
+},1000)
 
-Here are some general principles and techniques that can help you avoid sharing methods between unrelated classes:
+console.log("hi")
 
-    Define Clear Responsibilities:
-    Each class should have a clear and specific responsibility. Avoid combining unrelated functionalities within a single class.
+// second way--  make your own asynchronous function
 
-    Encapsulation:
-    Encapsulate the internal state and behavior of a class, exposing only what is necessary. Use private and protected access modifiers to control access to the internal details of a class.
+function asyn(callback, a, b){
 
-    Dependency Injection:
-    Rather than having one class depend on the methods of another class directly, use dependency injection. Pass the necessary dependencies to a class through its constructor or methods.
+  setTimeout(()=>{
+      callback(a,b)
+  },2000)
+}
 
-    Interfaces and Abstract Classes:
-    Define interfaces or abstract classes to provide a common set of methods that related classes can implement. This allows you to share a common interface without directly exposing the implementation.
+asyn(sub, 2,3)
 
-    Composition over Inheritance:
-    Prefer composition over inheritance. Instead of inheriting from a class to reuse its methods, favor composition by creating instances of classes within other classes.
 
-Here's a simple example illustrating some of these concepts:
+//do the same using a promise--
+
+function lol(){
+  return new Promise((resolve)=>{
+
+    setTimeout(()=>{
+      
+    },1111)
+  })
+}
+
+
+
+/* In JavaScript, the forEach method is used for iterating over array elements and applying a callback function to each element. However, it doesn't modify the original array directly when you update the element variable inside the callback function.
+
+In your code:
 
 javascript
 
-// Abstract interface or class
-class Calculator {
-  calculate(expression) {
-    // Implementation of the calculation
-    return eval(expression);
-  }
-}
+const arr = [1, 2, 3];
 
-class Teacher {
-  constructor(name, calculator) {
-    this.name = name;
-    this.calculator = calculator;
-  }
+arr.forEach((element) => element = element + 2);
 
-  performCalculation(expression) {
-    // Delegate the calculation to the injected calculator
-    return this.calculator.calculate(expression);
-  }
-}
+console.log(arr);
 
-// Example usage
-const calculator = new Calculator();
-const teacher = new Teacher("Mike", calculator);
+This code will not modify the arr array because the element variable inside the callback is a copy of the current array element, and modifying it does not affect the original array.
 
-console.log(teacher.performCalculation("2+3+4"));
+If you want to modify the array in place, you should use the index and update the array at that index:
 
-In this example, the Teacher class has a dependency on the Calculator class, but it doesn't directly use or share its methods. Instead, it delegates the calculation responsibility to the injected Calculator instance through the performCalculation method. This promotes a more modular */
+javascript
+
+const arr = [1, 2, 3];
+
+arr.forEach((element, index, array) => {
+  array[index] = element + 2;
+});
+
+console.log(arr);
+// Output: [3, 4, 5]
+
+In this example, the callback function takes three parameters: element, index, and array. The array[index] = element + 2 line updates the original array arr at the current index with the modified value. As a result, the arr array is modified in place, and you get the desired output.
+*/
+
+
+
