@@ -193,3 +193,141 @@ quiz(cb) */
 
 
   cookMaggie(bc, 4,4) */
+
+
+
+
+  //make an asynchronous function using callbacks, promises and async-await
+
+/*
+//callbacks
+function head(callback){
+
+  //simulate the asynchronity
+
+  setTimeout(()=>{
+    let value = { "message": "everyone is god"}
+    callback(null, value)
+  }, 2000)
+}
+
+
+function cb(err, success){
+  if(err){
+    console.error("error")
+  }
+  else{
+    console.log(success.message)
+  }
+}
+
+head(cb)
+
+*/
+
+//promises 
+
+
+/*
+function more(){
+  return new Promise((resolve, reject)=>{
+
+    //simulate the asynchronity
+    setTimeout(()=>{
+
+      let value = {"message": "god is everyone"}
+      value ? resolve(value) : reject("error")
+    },2000)
+  })
+}
+
+
+
+function callback(result){
+    console.log(result.message)
+  }
+
+more().then(callback) */
+
+
+
+
+
+
+//the way kirat did
+
+//----- using callbacks
+/*
+function head(callback){
+
+  //simulate the asynchronity 
+  setTimeout(()=>{
+    let value = {"message" : "god is everywhere"}
+    callback(value)
+  },3000)
+}
+
+
+
+  function main(){
+   head((value)=>{
+     console.log(value)
+   })
+ } */
+
+
+//-- using promises 
+
+/*
+function head(){
+return new Promise((resolve, reject)=>{
+  //trigger the asynchronity
+  setTimeout(()=>{
+    let value = {"message" : "find your true self"}
+     value ? resolve(value) : reject("error")
+  },3000)
+  
+})
+
+}
+
+
+
+function main(){
+  head().then((result)=>{
+    console.log(result)
+  })
+}
+
+main() */
+
+
+
+
+
+
+//--- using async.await
+
+
+/*
+function head(){
+  return new Promise((resolve, reject)=>{
+
+    //trigger the asynchronity
+
+    setTimeout(()=>{
+      let value = Math.random()
+      value > 0.5 ? resolve(value): reject("error--less qty")
+    }, 2000)
+  })
+}
+
+
+async function main(){
+  let result = await head()
+  console.log(result)
+}
+
+*/
+
+//main()
